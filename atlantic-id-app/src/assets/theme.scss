@@ -1,0 +1,57 @@
+// src/theme.scss
+@use '@angular/material' as mat;
+
+// ? Importing `Work Sans` font for headings, you can change this if you want
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500&display=swap");
+
+@import "./palettes.scss";
+
+// ? 1. Default theme
+$atlantic-id-app-primary: mat.define-palette($atlantic-palette);
+$atlantic-id-app-accent: mat.define-palette($accent-palette, A200, A100, A400);
+$atlantic-id-app-warn: mat.define-palette($warn-palette);
+
+$atlantic-id-app-theme: mat.define-light-theme((
+  color: (
+    primary: $atlantic-id-app-primary,
+    accent: $atlantic-id-app-accent,
+    warn: $atlantic-id-app-warn,
+  )
+));
+
+$atlantic-id-app-theme: mat.define-dark-theme((
+  color: (
+    primary: $atlantic-id-app-primary,
+    accent: $atlantic-id-app-accent,
+    warn: $atlantic-id-app-warn,
+  )
+));
+
+@include mat.all-component-colors($atlantic-id-app-theme);
+// @include mat.all-component-typographies($atlantic-id-app-accent);
+// @include mat.all-component-themes($atlantic-id-app-accent);
+
+// ? 2. Define an alternate dark theme.
+// $dark-primary: mat-palette($mat-blue-grey);
+// $dark-accent: mat-palette($mat-amber, A200, A100, A400);
+// $dark-warn: mat-palette($mat-deep-orange);
+// $dark-theme: mat-dark-theme(
+//   (
+//     color: (
+//       primary: $dark-primary,
+//       accent: $dark-accent,
+//       warn: $dark-warn,
+//     ),
+//   )
+// );
+
+// ? 3. Define a custom heading typography config
+// $heading-font-family: "'Work Sans', sans-serif";
+// $typography: mat-typography-config(
+//   $display-4: mat-typography-level(112px, $font-family: $heading-font-family),
+//   $display-3: mat-typography-level(56px, $font-family: $heading-font-family),
+//   $display-2: mat-typography-level(45px, $font-family: $heading-font-family),
+//   $display-1: mat-typography-level(34px, $font-family: $heading-font-family),
+//   $headline: mat-typography-level(24px, $font-family: $heading-font-family),
+//   $title: mat-typography-level(20px, $font-family: $heading-font-family),
+// );

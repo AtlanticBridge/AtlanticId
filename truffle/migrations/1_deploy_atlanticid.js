@@ -24,10 +24,11 @@ module.exports = async function(deployer, network, accounts) {
         }
     })
 
+    console.log('============================================')
+    console.log(`|   Connection to the ${network} network   |`)
+    console.log('============================================')
+
     if (network == 'ganache') {
-        console.log('=========================================')
-        console.log(`|   Welcome to the ${network} network   |`)
-        console.log('=========================================')
 
         /** DEPLOY CONTRACT(S) */
         await deployer.deploy(DateTimeLibrary)
@@ -52,9 +53,6 @@ module.exports = async function(deployer, network, accounts) {
     }
 
     else if (network == 'ganacheCli') {
-        console.log('=========================================')
-        console.log(`|   Welcome to the ${network} network   |`)
-        console.log('=========================================')
 
         await deployer.deploy(NfidContract)
         const instance = await NfidContract.deployed()
@@ -76,6 +74,10 @@ module.exports = async function(deployer, network, accounts) {
 
     else if (network == 'kovan') {
         console.log('This is the local host')
+    }
+
+    else if (network == 'rinkeby') {
+        console.log('This is the rinkeby network')
     }
 
     else if (network == 'mainnet') {

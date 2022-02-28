@@ -1,0 +1,73 @@
+<!-- Toolbar -->
+<mat-toolbar color="primary">
+    <div class="toolbar">
+        <div>
+            <img src="../../../assets/images/Atlantic_Logo.png" alt="Italian Trulli" width="120px" style="padding-top: 1.5vh;">
+            <!-- <h2>
+                Atlantic ID
+            </h2> -->
+        </div>
+
+        <!-- Navigation -->
+        <div *ngIf="!(isHandset$ | async)" class="mat-nav-horizontal">
+            <!-- Set Dropdown for Developers-->
+            
+
+            <div (mouseover)="changeText=true" (mouseout)="changeText=false">
+                <div class="nav-item">
+                    <div>Learn</div>
+                </div>
+                <app-developers *ngIf="changeText" (mouseover)="changeText=true" (mouseout)="changeText=false">Show</app-developers>
+            </div>
+
+            <div (mouseover)="changeText=true" (mouseout)="changeText=false">
+                <div class="nav-item">
+                    <div>Developers</div>
+                </div>
+                <app-developers *ngIf="changeText">Show</app-developers>
+            </div>
+
+            <div (mouseover)="changeText=true" (mouseout)="changeText=false">
+                <div class="nav-item">
+                    <div>Company</div>
+                </div>
+                <app-developers *ngIf="changeText">Show</app-developers>
+            </div>
+
+            <div *ngIf="(isHandset$ | async)">
+                <mat-list-item>
+                    <button (click)="onToggleSidenav($event)">
+                        <fa-icon [icon]="faBars" size="lg" (click)="onToggleSidenav($event)"></fa-icon>
+                    </button>
+                </mat-list-item>
+            </div>
+        </div>
+
+        <!-- LOGIN -->
+        <div *ngIf="!(isHandset$ | async)">
+            <button mat-stroked-button *ngIf="!isLoggedIn">
+                LogIn / Signup
+            </button>
+
+            <button mat-stroked-button *ngIf="isLoggedIn">
+                Logout
+            </button>
+        </div>
+
+        
+        <!-- <div class="dropdown-content">
+            <ul>
+                <li>Item 1</li>
+                <li>Item 1</li>
+                <li>Item 1</li>
+                <li>Item 1</li>
+            </ul>
+        </div> -->
+    </div>
+
+    <!-- <div fxHide.gt-xs>
+        <button mat-icon-button (click)="onToggleSidenav()">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </div> -->
+  </mat-toolbar>
