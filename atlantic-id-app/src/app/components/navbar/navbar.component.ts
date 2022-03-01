@@ -2,6 +2,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { map, Observable, shareReplay } from 'rxjs';
 import { AuthService } from "../../lib/auth/auth.service";
+import { HttpClient } from "@angular/common/http";
 // --- FORT AWESOME ---
 import { faEllipsisV, faBars } from "@fortawesome/free-solid-svg-icons";
 
@@ -18,6 +19,8 @@ export class NavbarComponent implements OnInit {
   showNavRow: boolean = false;
   sendHover: string = "";
 
+  postUrl: string = "https://qwde3c09pa.execute-api.us-east-1.amazonaws.com/nfid_v1/create_nfid";
+
   // --- Font Awesome ---
   faEllipsisV = faEllipsisV;
   faBars =faBars;
@@ -26,8 +29,11 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private authService: AuthService
-  ) { }
+    private authService: AuthService,
+    private httpClient: HttpClient
+  ) {
+    // this.httpClient.get("https://qwde3c09pa.execute-api.us-east-1.amazonaws.com/nfid_v1/create_nfid").subscribe();
+  }
 
   ngOnInit(): void {
     this.authService.isLoggedIn.subscribe(loggedin => this.isLoggedIn = loggedin)
@@ -55,6 +61,21 @@ export class NavbarComponent implements OnInit {
 
   turnOff(b:boolean) {
     this.showNavRow = false;
+  }
+
+  // https://www.coinbase.com/oauth/authorize
+  //  - response_type=code
+  //  - client_id=YOUR_CLIENT_ID
+  //  - redirect_uri=YOUR_REDIRECT_URL
+  //  - state=SECURE_RANDOM
+  //  - scope=wallet:accounts:read
+  coinbaseLogin() {
+    localStorage.setItem('GitCrypto_Login', 'coinbase')
+    const payload = {
+
+    }
+    console.log('Coinbase Login')
+    // this.httpClient.post(this.postUrl, )
   }
 
 }

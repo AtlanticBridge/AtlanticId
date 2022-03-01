@@ -14,6 +14,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NavhubComponent } from './components/navhub/navhub.component';
+import { RedirectComponent } from './pages/redirect/redirect.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { NavhubComponent } from './components/navhub/navhub.component';
     HomeComponent,
     LoginComponent,
     DashboardComponent,
-    NavhubComponent
+    NavhubComponent,
+    RedirectComponent
   ],
   imports: [
     BrowserModule,

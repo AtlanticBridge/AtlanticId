@@ -42,7 +42,7 @@
 
         <!-- LOGIN -->
         <div *ngIf="!(isHandset$ | async)">
-            <button mat-stroked-button *ngIf="!isLoggedIn">
+            <button mat-stroked-button *ngIf="!isLoggedIn" (click)="coinbaseLogin()">
                 LogIn / Signup
             </button>
 

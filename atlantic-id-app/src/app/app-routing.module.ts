@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 // --- PAGE COMPONENTS ---
 import { HomeComponent } from "./pages/home/home.component";
+import { RedirectComponent } from './pages/redirect/redirect.component';
 
 const routes: Routes = [
   {
@@ -10,6 +11,11 @@ const routes: Routes = [
     component: HomeComponent,
     data: { title: 'Home Component'}
   },
+  {
+    path: 'rediect',
+    component: RedirectComponent,
+    data: { title: 'Redirect Component'}
+  }
 ];
 
 @NgModule({
