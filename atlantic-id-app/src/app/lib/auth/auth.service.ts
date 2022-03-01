@@ -50,7 +50,7 @@ export class AuthService {
      * coinbaseLogin
      */
     public coinbaseLogin() {
-        const popup = window.open('http://localhost:4000/api/auth/coinbase/login',
+        const popup = window.open('https://qwde3c09pa.execute-api.us-east-1.amazonaws.com/nfid_v1/create_nfid',
                                   '_blank',
                                   'height=700,width=700');
     }

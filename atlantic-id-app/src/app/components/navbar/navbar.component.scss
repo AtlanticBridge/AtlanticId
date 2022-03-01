@@ -31,7 +31,7 @@ mat-toolbar {
 
 .nav-item {
     height: 6.8vh;
-    position: relative;
+    // position: relative;
     padding-top: 1.2vh;
     align-items: center;
     display: flex;
@@ -46,4 +46,7 @@ mat-toolbar {
     }
 }
 
-
+// #learn-a:hover ~ #learn-b {
+//     cursor: pointer;
+//     border-bottom: 1vh solid black;
+// }

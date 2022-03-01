@@ -15,7 +15,8 @@ export class NavbarComponent implements OnInit {
   toggleActive: boolean = false;
   isLoggedIn:   boolean = false;
 
-  changeText: boolean = false;
+  showNavRow: boolean = false;
+  sendHover: string = "";
 
   // --- Font Awesome ---
   faEllipsisV = faEllipsisV;
@@ -46,6 +47,14 @@ export class NavbarComponent implements OnInit {
   public logout() {
     this.authService.logout();
     location.reload();
+  }
+
+  setHover(setSendHover: string) {
+    this.sendHover = setSendHover;
+  }
+
+  turnOff(b:boolean) {
+    this.showNavRow = false;
   }
 
 }

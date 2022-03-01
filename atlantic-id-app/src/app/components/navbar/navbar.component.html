@@ -10,29 +10,26 @@
 
         <!-- Navigation -->
         <div *ngIf="!(isHandset$ | async)" class="mat-nav-horizontal">
-            <!-- Set Dropdown for Developers-->
-            
 
-            <div (mouseover)="changeText=true" (mouseout)="changeText=false">
-                <div class="nav-item">
-                    <div>Learn</div>
+            <div (mouseover)="showNavRow=true" (mouseover)="setHover('learn')">
+                <div id="learn-b" class="nav-item">
+                    <div (mouseout)="showNavRow=false">Learn</div>
                 </div>
-                <app-developers *ngIf="changeText" (mouseover)="changeText=true" (mouseout)="changeText=false">Show</app-developers>
             </div>
 
-            <div (mouseover)="changeText=true" (mouseout)="changeText=false">
+            <div (mouseover)="showNavRow=true" (mouseover)="setHover('developers')">
                 <div class="nav-item">
-                    <div>Developers</div>
+                    <div (mouseout)="showNavRow=false">Developers</div>
                 </div>
-                <app-developers *ngIf="changeText">Show</app-developers>
             </div>
 
-            <div (mouseover)="changeText=true" (mouseout)="changeText=false">
+            <div (mouseover)="showNavRow=true" (mouseover)="setHover('company')">
                 <div class="nav-item">
-                    <div>Company</div>
+                    <div (mouseout)="showNavRow=false">Company</div>
                 </div>
-                <app-developers *ngIf="changeText">Show</app-developers>
             </div>
+
+            <app-navhub [showNav]="sendHover" *ngIf="showNavRow" (turnOffEvent)="turnOff($event)"></app-navhub>
 
             <div *ngIf="(isHandset$ | async)">
                 <mat-list-item>
