@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 // --- PAGE COMPONENTS ---
 import { HomeComponent } from "./pages/home/home.component";
+import { LoginComponent } from './components/login/login.component';
 import { RedirectComponent } from './pages/redirect/redirect.component';
 
 const routes: Routes = [
@@ -12,7 +13,12 @@ const routes: Routes = [
     data: { title: 'Home Component'}
   },
   {
-    path: 'rediect',
+    path: 'login',
+    component: LoginComponent,
+    data: { title: 'Login Component'}
+  },
+  {
+    path: 'redirect',
     component: RedirectComponent,
     data: { title: 'Redirect Component'}
   }

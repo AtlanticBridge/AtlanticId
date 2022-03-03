@@ -32,7 +32,7 @@ export class NavbarComponent implements OnInit {
     private authService: AuthService,
     private httpClient: HttpClient
   ) {
-    // this.httpClient.get("https://qwde3c09pa.execute-api.us-east-1.amazonaws.com/nfid_v1/create_nfid").subscribe();
+    console.log('Hello World')
   }
 
   ngOnInit(): void {
@@ -70,11 +70,10 @@ export class NavbarComponent implements OnInit {
   //  - state=SECURE_RANDOM
   //  - scope=wallet:accounts:read
   coinbaseLogin() {
-    localStorage.setItem('GitCrypto_Login', 'coinbase')
-    const payload = {
-
-    }
-    console.log('Coinbase Login')
+    localStorage.setItem('AtlanticId_Login', 'coinbase')
+    const popup = window.open('http://localhost:4200/login',
+                              '_blank',
+                              'height=700,width=700');
     // this.httpClient.post(this.postUrl, )
   }
 
