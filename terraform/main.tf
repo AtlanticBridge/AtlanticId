@@ -1,7 +1,26 @@
-provider "aws" {
-  region     = "us-east-1"
-  access_key = var.ACCESS_KEY
-  secret_key = var.SECRET_KEY
+# provider "aws" {
+#   region     = "us-east-1"
+#   access_key = var.ACCESS_KEY
+#   secret_key = var.SECRET_KEY
+# }
+
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+    }
+    random = {
+      source = "hashicorp/random"
+    }
+  }
+
+  cloud {
+    organization = "atlantic-labs"
+
+    workspaces {
+      name = "nfid-backend"
+    }
+  }
 }
 
 module "nfid" {
