@@ -84,7 +84,7 @@ jobs:
     # Generates an execution plan for Terraform
     - name: Terraform Plan
       run: terraform plan
-      with:
+      env:
         CLIENT_ID: ${{ secrets.TF_CLIENT_ID }}
         CLIENT_SECRET: ${{ secrets.TF_CLIENT_SECRET }}
         REDIRECT_URI: ${{ secrets.TF_REDIRECT_URI }}
