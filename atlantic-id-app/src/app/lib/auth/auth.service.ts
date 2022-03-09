@@ -82,12 +82,10 @@ export class AuthService {
         return localStorage.getItem(this.ACCESS_TOKEN);
     }
 
-
     /**
      * storeJwtTokens
      */
     public storeJwtTokens(tokens: any) {
-        console.log('The Tokens: ', tokens.authToken)
         localStorage.setItem(this.ACCESS_TOKEN, tokens.authToken.accessToken);
         localStorage.setItem(this.REFRESH_TOKEN, tokens.authToken.accessToken);
     }

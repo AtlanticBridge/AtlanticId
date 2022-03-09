@@ -5,6 +5,7 @@ import { AuthService } from "../../lib/auth/auth.service";
 import { HttpClient } from "@angular/common/http";
 // --- FORT AWESOME ---
 import { faEllipsisV, faBars } from "@fortawesome/free-solid-svg-icons";
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-navbar',
@@ -71,9 +72,11 @@ export class NavbarComponent implements OnInit {
   //  - scope=wallet:accounts:read
   coinbaseLogin() {
     localStorage.setItem('AtlanticId_Login', 'coinbase')
-    const popup = window.open('http://localhost:4200/login',
-                              '_blank',
-                              'height=700,width=700');
+    // window.open('http://localhost:4200/login','_blank','height=700,width=700')
+    window.open(environment.AWS_COINBASE_LOGIN_ENDPOINT, '_blank', 'height=700,width=700');
+    // const popup = window.open('http://localhost:4200/login',
+    //                           '_blank',
+    //                           'height=700,width=700');
     // this.httpClient.post(this.postUrl, )
   }
 
