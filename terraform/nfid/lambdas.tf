@@ -61,9 +61,9 @@ resource "aws_lambda_function" "nfid_sign_in_lambda" {
 
   environment {
     variables = {
-      CLIENT_ID     = var.CLIENT_ID
-      CLIENT_SECRET = var.CLIENT_SECRET
-      REDIRECT_URI  = var.REDIRECT_URI
+      CLIENT_ID     = var.client_id
+      CLIENT_SECRET = var.client_secret
+      REDIRECT_URI  = var.redirect_uri
     }
   }
 }
