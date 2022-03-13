@@ -11,12 +11,13 @@ logger.setLevel(logging.INFO)
 
 
 def lambda_handler(event, context):
-    
+
     headers = {
-        "Access-Control-Allow-Origin": "*", 
+        "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "OPTIONS, POST",
-        "Access-Control-Allow-Credentials" : True,
-        "Access-Control-Allow-Headers" : "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token"
+        "Access-Control-Allow-Credentials": True,
+        "Access-Control-Allow-Headers": "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token",
+        "Content-Type": "application/json",
     }
 
     logging.info(event)
@@ -86,11 +87,15 @@ def lambda_handler(event, context):
                 "salt": {"S": salt},
             },
         )
-        
+
         logging.info(put_response)
-        
+
     except Exception as e:
         logging.error(e)
-        return {"statusCode": 500, "headers": headers, "body": json.dumps("Internal server error")}
+        return {
+            "statusCode": 500,
+            "headers": headers,
+            "body": json.dumps("Internal server error"),
+        }
 
     return {"statusCode": 200, "headers": headers, "body": json.dumps(nfid)}
