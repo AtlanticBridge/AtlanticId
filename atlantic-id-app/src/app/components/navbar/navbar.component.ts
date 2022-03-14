@@ -5,6 +5,7 @@ import { AuthService } from "../../lib/auth/auth.service";
 import { HttpClient } from "@angular/common/http";
 // --- FORT AWESOME ---
 import { faEllipsisV, faBars } from "@fortawesome/free-solid-svg-icons";
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-navbar',

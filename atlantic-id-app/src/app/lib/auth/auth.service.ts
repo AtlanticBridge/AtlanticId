@@ -78,7 +78,6 @@ export class AuthService {
         return localStorage.getItem(this.ACCESS_TOKEN);
     }
 
-
     /**
      * storeJwtTokens
      */
