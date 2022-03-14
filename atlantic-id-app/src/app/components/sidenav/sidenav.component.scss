@@ -1,0 +1,15 @@
+mat-sidenav-container {
+    height: 100%;
+    box-shadow: 0 8px 6px -6px black;
+    // background-color: white;
+}
+
+mat-sidenav {
+    // background-color: white;
+    width: 250px; 
+}
+
+mat-sidenav-content {
+    height: inherit;
+    // background-color: blue;
+}

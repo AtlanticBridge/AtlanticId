@@ -49,6 +49,10 @@
             <button mat-stroked-button *ngIf="isLoggedIn">
                 Logout
             </button>
+
+            <div *ngIf="isLoggedIn">
+                <a routerLink="/dashboard" style="color:rgb(102, 102, 102);">Dashboard</a>
+            </div>
         </div>
 
         
@@ -61,10 +65,4 @@
             </ul>
         </div> -->
     </div>
-
-    <!-- <div fxHide.gt-xs>
-        <button mat-icon-button (click)="onToggleSidenav()">
-            <mat-icon>menu</mat-icon>
-        </button>
-    </div> -->
   </mat-toolbar>

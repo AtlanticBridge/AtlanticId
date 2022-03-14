@@ -57,7 +57,8 @@ export class RedirectComponent implements OnInit {
 
     _res.subscribe((data: any) => {
       console.log('Here is the data: ', data)
-      this.authService.storeJwtTokens(data);
+      // this.authService.storeJwtTokens(data);
+      this.authService.storeNfid(data)
       this.authService.updateLoggedIn(true);
       window.opener.location.reload();
       window.close();

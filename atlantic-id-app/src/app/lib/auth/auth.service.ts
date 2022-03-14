@@ -17,6 +17,7 @@ export class AuthService {
     loggedInUser:  string = 'unknown';
     ACCESS_TOKEN:  string = 'ACCESS_TOKEN';
     REFRESH_TOKEN: string = 'REFRESH_TOKEN';
+    USER_NFID:     string = 'USER_NFID';
 
     // --- BEHAVIOR SUBJECTS ---
     private userLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
@@ -29,15 +30,22 @@ export class AuthService {
 
     constructor(
         private http: HttpClient
-    ) { }
+    ) {
+        this.isAuthenticated()
+    }
 
     // ======================
     // --- PUBLIC METHODS ---
     // ======================
 
+    /**
+     * Checks of user is logged in by looking for the user's NFID number.
+     * @returns boolean
+     */
     public isAuthenticated(): boolean {
 
-        if(localStorage.getItem(this.ACCESS_TOKEN)) {
+        // if(localStorage.getItem(this.ACCESS_TOKEN)) {
+        if(localStorage.getItem(this.USER_NFID)) {
             this.updateLoggedIn(true);
             return true
         }
@@ -84,6 +92,15 @@ export class AuthService {
     public storeJwtTokens(tokens: any) {
         localStorage.setItem(this.ACCESS_TOKEN, tokens.authToken.accessToken);
         localStorage.setItem(this.REFRESH_TOKEN, tokens.authToken.accessToken);
+    }
+
+    /**
+     * Store NFID Token
+     * @param username 
+     * @param tokens 
+     */
+    public storeNfid(nfid: string) {
+        localStorage.setItem(this.USER_NFID, nfid)
     }
 
     // public queryJwtTokens(): Observable<ApolloQueryResult> {

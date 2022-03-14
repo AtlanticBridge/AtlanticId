@@ -35,7 +35,10 @@ export class NavbarComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.authService.isLoggedIn.subscribe(loggedin => this.isLoggedIn = loggedin)
+    this.authService.isLoggedIn.subscribe(loggedin => {
+      console.log(loggedin)
+      this.isLoggedIn = loggedin
+    })
   }
 
   public onToggleSidenav(event: Event) {

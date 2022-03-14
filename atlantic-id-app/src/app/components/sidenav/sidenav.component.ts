@@ -1,5 +1,5 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout'
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
@@ -28,6 +28,7 @@ export class SidenavComponent implements OnInit {
   faSearch = faSearch;
   // View Childs
   @ViewChild('sidenav') public sideNav: MatSidenav | any
+  @Input() themeColor = 'primary';
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(

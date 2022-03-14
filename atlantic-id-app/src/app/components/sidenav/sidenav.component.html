@@ -1,5 +1,5 @@
 <mat-sidenav-container>
-    <mat-sidenav #sidenav role="navigation" opened="false" [attr.color]="primary"
+    <mat-sidenav #sidenav role="navigation" opened="false" 
       [fixedInViewport]="true"
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
@@ -48,27 +48,7 @@
                 <a mat-list-item style="color: gray;">Components</a>
             </mat-nav-list>
         </div>
-        
-        
     </mat-sidenav>
-
-
-    <!-- <mat-sidenav *ngIf="isDashboard" #sidenav role="navigation" opened="false" style="background-color: white; width: 200px;"
-      [att.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
-        <div>
-            <mat-list-item>
-                <a routerLink="/">Home</a>
-            </mat-list-item>
-            <mat-list-item>
-                <a routerLink="/dashboard">Dashboard</a>
-            </mat-list-item>
-            <mat-list-item>
-                <a routerLink="/signup">SignUp</a>
-            </mat-list-item>
-        </div>
-    </mat-sidenav> -->
     
     <mat-sidenav-content>
         <ng-content></ng-content>

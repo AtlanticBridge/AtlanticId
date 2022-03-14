@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { AuthService } from './lib/auth/auth.service';
 import { SidenavService } from './lib/services/sidenav/sidenav.service';
 
 @Component({
@@ -15,13 +16,16 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild(SidenavComponent) public sidenavComponent: SidenavComponent | any
 
   constructor(
-    private sideNavService: SidenavService
+    private sideNavService: SidenavService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
     this.sideNavService.isDashboard.subscribe((toggletoolbar: boolean) => {
       this.toggleToolbar = toggletoolbar
     })
+
+    // this.authService.
   }
 
   ngAfterViewInit(): void {

@@ -1,5 +1,6 @@
 // src/theme.scss
 @use '@angular/material' as mat;
+@use './custom-component-themes/sidenav.theme.scss' as sidenav;
 
 // ? Importing `Work Sans` font for headings, you can change this if you want
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500&display=swap");
@@ -28,6 +29,7 @@ $atlantic-id-app-theme: mat.define-dark-theme((
 ));
 
 @include mat.all-component-colors($atlantic-id-app-theme);
+@include sidenav.theme($atlantic-id-app-theme);
 // @include mat.all-component-typographies($atlantic-id-app-accent);
 // @include mat.all-component-themes($atlantic-id-app-accent);
 
