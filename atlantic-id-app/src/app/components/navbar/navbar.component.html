@@ -46,13 +46,17 @@
                 LogIn / Signup
             </button>
 
-            <button mat-stroked-button *ngIf="isLoggedIn">
-                Logout
-            </button>
-
-            <div *ngIf="isLoggedIn">
-                <a routerLink="/dashboard" style="color:rgb(102, 102, 102);">Dashboard</a>
+            <div class="logged-in-paths">
+                <button mat-stroked-button *ngIf="isLoggedIn">
+                    Logout
+                </button>
+    
+                <div *ngIf="isLoggedIn">
+                    <a mat-flat-button color="accent" routerLink="/dashboard" class="nav">Dashboard</a>
+                </div>
             </div>
+
+            
         </div>
 
         

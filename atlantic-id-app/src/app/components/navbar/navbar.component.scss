@@ -28,6 +28,15 @@ mat-toolbar {
     gap: 0 35px;
 }
 
+.logged-in-paths {
+    display: flex;
+    gap: 0 25px;
+
+    .nav {
+        text-decoration: none;
+    }
+}
+
 
 .nav-item {
     height: 6.8vh;

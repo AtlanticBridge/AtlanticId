@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Web3modalService } from 'src/app/lib/services/web3modal/web3modal.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  isConnected: boolean = false;
+
+  constructor(
+    private web3modalService: Web3modalService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  async connectWeb3Modal() {
+    try {
+      await this.web3modalService.connectAccount();
+    } catch (error) {
+      alert('Did not connect')
+    }
+    this.isConnected = true;
   }
 
 }
