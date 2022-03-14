@@ -33,7 +33,20 @@
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "http",
+              "os",
+              "https",
+              "stream",
+              "crypto",
+              "@walletconnect/web3-provider",
+              "web3",
+              "path",
+              "fs",
+              "util",
+              "assert"
+            ]
           },
           "configurations": {
             "production": {
