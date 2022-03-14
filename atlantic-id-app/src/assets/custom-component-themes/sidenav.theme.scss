@@ -1,0 +1,31 @@
+@import '~@angular/material/theming';
+
+@mixin _main-color($palette) {
+    background: mat-color($palette);
+    color: mat-color($palette, default-contrast);
+}
+
+@mixin sidenav-component-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+
+    .mat-sidenav{
+        // let's take mat-toolbar's default theme
+        // ref: https://github.com/angular/material2/blob/88601fa51d581f538468a9b63890b0e285e519cb/src/lib/toolbar/_toolbar-theme.scss#L39
+        background-color: mat-color($background, app-bar);
+        color: mat-color($foreground, text);
+    
+        // now, mat-toolbar's colored themes
+        // ref: https://github.com/angular/material2/blob/e136fc8707ec3278ba32659e4d77ff21eed6de73/src/lib/toolbar/_toolbar-theme.scss#L6
+        &[color=primary]{
+          @include _main-color($primary);
+        }
+        &[color=accent]{
+          @include _main-color($accent);
+        }
+        &[color=warn]{
+          @include _main-color($warn);
+        }
+    }
+}

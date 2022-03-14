@@ -1,1 +1,76 @@
-<p>sidenav works!</p>
+<mat-sidenav-container>
+    <mat-sidenav #sidenav role="navigation" opened="false" [attr.color]="primary"
+      [fixedInViewport]="true"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="((isDashboard | async) === 'dashboardSet' && (isHandset$ | async) === false)">
+        <!-- PLACE TO ADD SIDENAV CODE -->
+        <h1 style="display: flex; justify-content: center; color: #1988d2; margin: 15%;">
+            Atlantic NFID
+        </h1>
+        <br>
+        <div style="padding-left: 7%; padding-right: 7%;">
+
+            <mat-nav-list>
+                <mat-list-item>
+                    <fa-icon [icon]="faHome" size='sm' style="color: orangered;"></fa-icon>
+                    <span style="width: 10%;"></span>
+                    <a routerLink="/" style="color:rgb(102, 102, 102);">Home</a>
+                </mat-list-item>
+                <mat-list-item>
+                    <fa-icon [icon]="faDesktop" size='sm' style="color: #1988d2;"></fa-icon>
+                    <span style="width: 10%;"></span>
+                    <a routerLink="/dashboard" style="color:rgb(102, 102, 102);">Dashboard</a>
+                </mat-list-item>
+                <mat-list-item>
+                    <fa-icon [icon]="faUser" size='sm' style="color: orchid;"></fa-icon>
+                    <span style="width: 10%;"></span>
+                    <a routerLink="/userprofile" style="color:rgb(102, 102, 102);">User Profile</a>
+                </mat-list-item>
+                <mat-list-item>
+                    <fa-icon [icon]="faSearch" size='sm' style="color: green;"></fa-icon>
+                    <span style="width: 10%;"></span>
+                    <a routerLink="/userprofile" style="color:rgb(102, 102, 102);">Find Developer</a>
+                </mat-list-item>
+                <!-- <mat-list-item>
+                    <a routerLink="/signup">SignUp</a>
+                </mat-list-item> -->
+                
+                
+            </mat-nav-list>
+    
+            <br>
+            <mat-divider style="border-top-color: lightgray; border-top-width: 1.2px;"></mat-divider>
+            
+            <mat-nav-list dense>
+                <h5 style="color: gray">DOCUMENTATION</h5>
+                <a mat-list-item style="color: gray;">Getting Started</a>
+                <a mat-list-item style="color: gray;">Components</a>
+            </mat-nav-list>
+        </div>
+        
+        
+    </mat-sidenav>
+
+
+    <!-- <mat-sidenav *ngIf="isDashboard" #sidenav role="navigation" opened="false" style="background-color: white; width: 200px;"
+      [att.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+        <div>
+            <mat-list-item>
+                <a routerLink="/">Home</a>
+            </mat-list-item>
+            <mat-list-item>
+                <a routerLink="/dashboard">Dashboard</a>
+            </mat-list-item>
+            <mat-list-item>
+                <a routerLink="/signup">SignUp</a>
+            </mat-list-item>
+        </div>
+    </mat-sidenav> -->
+    
+    <mat-sidenav-content>
+        <ng-content></ng-content>
+    </mat-sidenav-content>
+</mat-sidenav-container>

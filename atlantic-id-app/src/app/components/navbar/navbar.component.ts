@@ -31,16 +31,13 @@ export class NavbarComponent implements OnInit {
     private breakpointObserver: BreakpointObserver,
     private authService: AuthService,
     private httpClient: HttpClient
-  ) {
-    console.log('Hello World')
-  }
+  ) { }
 
   ngOnInit(): void {
     this.authService.isLoggedIn.subscribe(loggedin => this.isLoggedIn = loggedin)
   }
 
   public onToggleSidenav(event: Event) {
-    console.log('Toggle the sidenav')
     this.sidenavToggle.emit(event);
   }
 
@@ -63,18 +60,11 @@ export class NavbarComponent implements OnInit {
     this.showNavRow = false;
   }
 
-  // https://www.coinbase.com/oauth/authorize
-  //  - response_type=code
-  //  - client_id=YOUR_CLIENT_ID
-  //  - redirect_uri=YOUR_REDIRECT_URL
-  //  - state=SECURE_RANDOM
-  //  - scope=wallet:accounts:read
   coinbaseLogin() {
     localStorage.setItem('AtlanticId_Login', 'coinbase')
     const popup = window.open('http://localhost:4200/login',
                               '_blank',
-                              'height=700,width=700');
-    // this.httpClient.post(this.postUrl, )
+                              'height=700,width=700')
   }
 
 }
