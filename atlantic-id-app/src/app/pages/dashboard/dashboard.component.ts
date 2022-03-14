@@ -8,7 +8,7 @@ import { Web3modalService } from 'src/app/lib/services/web3modal/web3modal.servi
 })
 export class DashboardComponent implements OnInit {
 
-  isConnected: boolean = false;
+  isConnected: boolean = true;
 
   constructor(
     private web3modalService: Web3modalService
@@ -20,10 +20,11 @@ export class DashboardComponent implements OnInit {
   async connectWeb3Modal() {
     try {
       await this.web3modalService.connectAccount();
+      this.isConnected = true;
     } catch (error) {
       alert('Did not connect')
     }
-    this.isConnected = true;
+    
   }
 
 }

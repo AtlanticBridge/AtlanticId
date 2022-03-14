@@ -15,6 +15,8 @@ import { LoginComponent } from './components/login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NavhubComponent } from './components/navhub/navhub.component';
 import { RedirectComponent } from "./pages/redirect/redirect.component";
+import { NfidCardComponent } from './components/nfid-card/nfid-card.component';
+import { UserInfoCardComponent } from './components/user-info-card/user-info-card.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { RedirectComponent } from "./pages/redirect/redirect.component";
     LoginComponent,
     DashboardComponent,
     NavhubComponent,
-    RedirectComponent
+    RedirectComponent,
+    NfidCardComponent,
+    UserInfoCardComponent
   ],
   imports: [
     BrowserModule,

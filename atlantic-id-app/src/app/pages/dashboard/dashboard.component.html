@@ -1,1 +1,36 @@
-<p>dashboard works!</p>
+<mat-toolbar
+    color="primary"
+    class="dashboard-toolbar"
+>
+    <button
+        mat-stroked-button
+        color="primary"
+        (click)="connectWeb3Modal()"
+        *ngIf="!isConnected"
+        class="login-button"
+    >Connect Wallet</button>
+
+    <div *ngIf="isConnected">
+        Welcome to your Dashboard
+    </div>
+</mat-toolbar>
+
+<div class="dashboard-page">
+    <div
+        *ngIf="!isConnected"
+        style="font-size: xx-large;"
+    >
+        Please Connect to an Ethereum (Rinkeby) Wallet
+    </div>
+
+    <div
+        *ngIf="isConnected"
+        class="user-data"
+    >
+        <!-- The Dashboard Page -->
+        <app-nfid-card></app-nfid-card>
+        <app-user-info-card></app-user-info-card>
+    </div>
+</div>
+
+
