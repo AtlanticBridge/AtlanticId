@@ -1,5 +1,15 @@
 .user-info-card {
-    min-width: 500px;
-    min-height: 700px;
+    // min-width: 500px;
+    // min-height: 700px;
+    min-width: 30vw;
+    min-height: 75vh;
     box-shadow: 20px -16px teal;
+}
+
+@media (max-width: 1400px) {
+    .user-info-card {
+        min-width: 60vw;
+        min-height: 30vh;
+        box-shadow: 20px -16px teal;
+    }
 }

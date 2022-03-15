@@ -22,5 +22,14 @@
     display: flex;
     width: inherit;
     justify-content: space-around;
-    // gap: 0 175px;
+}
+
+@media (max-width: 1400px) {
+    .user-data {
+        display: flex;
+        flex-flow: column wrap;
+        gap: 10vh;
+        width: auto;
+        justify-content: space-around;
+    }
 }

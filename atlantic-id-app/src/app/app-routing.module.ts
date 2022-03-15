@@ -7,6 +7,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RedirectComponent } from './pages/redirect/redirect.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { AuthGuardService } from './lib/auth/auth.guard';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 const routes: Routes = [
   {
@@ -28,6 +29,12 @@ const routes: Routes = [
     path: 'dashboard',
     component: DashboardComponent,
     data: { title: 'Dashboard Component' },
+    canActivate: [ AuthGuardService ]
+  },
+  {
+    path: 'settings',
+    component: SettingsComponent,
+    data: { title: 'Settings Component' },
     canActivate: [ AuthGuardService ]
   },
   {

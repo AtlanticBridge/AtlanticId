@@ -29,6 +29,11 @@ export class SidenavComponent implements OnInit {
   // View Childs
   @ViewChild('sidenav') public sideNav: MatSidenav | any
   @Input() themeColor = 'primary';
+  // Valid User Routes
+  userRoutes = [
+    '/dashboard',
+    '/settings'
+  ]
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -49,10 +54,13 @@ export class SidenavComponent implements OnInit {
     this.router.events.forEach(event => {
       if (event instanceof NavigationEnd) {
         // this.isDashboardSource.next(event.url);
-        if (event.url === "/dashboard" || event.url === "/userprofile") {
+        // event.url === "/dashboard" || event.url === "/settings"
+        if (this.userRoutes.includes(event.url)) {
+          console.log('This route is good...')
           this.sidenavService.setIsDashboard(true);
           this.isDashboardSource.next('dashboardSet');
         } else {
+          console.log('This route is not good...')
           this.sidenavService.setIsDashboard(false);
           this.isDashboardSource.next(event.url);
         }
