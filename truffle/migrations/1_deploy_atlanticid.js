@@ -56,7 +56,11 @@ module.exports = async function(deployer, network, accounts) {
         console.log(`|   Welcome to the ${network} network   |`)
         console.log('=========================================')
 
+        /** DEPLOY CONTRACT(S) */
+        await deployer.deploy(DateTimeLibrary)
+        await deployer.link(DateTimeLibrary, NfidContract)
         await deployer.deploy(NfidContract)
+        /** ------------------ */
         const instance = await NfidContract.deployed()
 
         let data = {
@@ -75,7 +79,30 @@ module.exports = async function(deployer, network, accounts) {
     }
 
     else if (network == 'kovan') {
-        console.log('This is the local host')
+        console.log('=========================================')
+        console.log(`|   Welcome to the ${network} network   |`)
+        console.log('=========================================')
+
+        /** DEPLOY CONTRACT(S) */
+        await deployer.deploy(DateTimeLibrary)
+        await deployer.link(DateTimeLibrary, NfidContract)
+        await deployer.deploy(NfidContract)
+        /** ------------------ */
+        const instance = await NfidContract.deployed()
+
+        let data = {
+            "owner": accounts[0],
+            "contract_address": instance.address,
+            "network": network,
+            "addresses": accounts
+        }
+
+        var jsonData = JSON.stringify(data);
+        fs.writeFileSync("outputs/1_kovan_NfidContract.json", jsonData, function(err) {
+            if (err) {
+                console.log(err);
+            }
+        })
     }
 
     else if (network == 'mainnet') {
