@@ -86,3 +86,8 @@
 // }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+@font-face {
+    font-family: "GroteskRoman55";
+    src: local("GroteskRoman55") url(./assets/fonts/neue_haas_grotesk_display_round/NeueHaasGrotDispRound-55Roman-App.ttf) format("truetype");
+}

@@ -8,18 +8,24 @@
   // Get the primary color palette from the color-config.
   $primary-palette: map.get($color-config, 'primary');
 
-  .mat-sidenav {
-    background-color: mat.get-color-from-palette($primary-palette, 500);
+  .nfid-card  {
+    background-color: mat.get-color-from-palette($primary-palette, 900);
+    // color: rgba(black, 0.87);
     color: white;
-    box-shadow: 1px 0 0 mat.get-color-from-palette($primary-palette, 50);;
   }
 
-  mat-sidenav-content {
-    // Read the 500 hue from the primary color palette.
-    color: mat.get-color-from-palette($primary-palette, 900);
-    background-color: mat.get-color-from-palette($primary-palette, 50);
-    // background-color: orange;
+  .user-info-card {
+    background-color: mat.get-color-from-palette($primary-palette, 100);
+    color: rgba(black, 0.87);
   }
+
+  // .mat-card-title {
+  //     color: mat.get-color-from-palette($primary-palette, 900);
+  // }
+
+  // .mat-card-subtitle {
+  //     color: mat.get-color-from-palette($primary-palette, 200);
+  // }
 
   
 }

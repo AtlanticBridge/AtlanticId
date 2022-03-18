@@ -18,6 +18,7 @@ import { RedirectComponent } from "./pages/redirect/redirect.component";
 import { NfidCardComponent } from './components/nfid-card/nfid-card.component';
 import { UserInfoCardComponent } from './components/user-info-card/user-info-card.component';
 import { SettingsComponent } from './pages/settings/settings.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { SettingsComponent } from './pages/settings/settings.component';
     RedirectComponent,
     NfidCardComponent,
     UserInfoCardComponent,
-    SettingsComponent
+    SettingsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

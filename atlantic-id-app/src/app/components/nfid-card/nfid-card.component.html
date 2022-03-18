@@ -1,3 +1,21 @@
 <mat-card class="nfid-card">
     <mat-card-title>The NFID Card</mat-card-title>
+    <mat-card-subtitle>Before you can mint, you must request a mint key by selecting the "Requst Mint" button below.</mat-card-subtitle>
+    <mat-card-content class="mat-card-content">
+        <div class="mat-card-content-main">
+            <!-- <div style="font-size: large;">
+                Before you can mint, you must request a mint key by selecting the "Requst Mint" button below.
+            </div> -->
+            <div style="font-size: large; font-weight: bold;">
+                <button mat-raised-button [disabled]="canMint" color="primary">Mint NFID</button> {{ nfidToken }}
+            </div>
+            <!-- <mat-divider style="border-top-color: lightgray; border-top-width: 1.2px;"></mat-divider> -->
+        </div>
+        <div>
+            <button mat-raised-button color="primary" (click)="requestMint()">Request Mint</button>
+        </div>
+        <div>
+            <button mat-raised-button color="primary">Request Transfer</button>
+        </div>
+    </mat-card-content>
 </mat-card>

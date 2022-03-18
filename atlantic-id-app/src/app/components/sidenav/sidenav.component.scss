@@ -4,9 +4,10 @@ mat-sidenav-container {
     // background-color: white;
 }
 
-mat-sidenav {
+.mat-sidenav {
     // background-color: white;
-    width: 250px; 
+    width: 250px;
+    font-family: "GroteskRoman55";
 }
 
 mat-sidenav-content {

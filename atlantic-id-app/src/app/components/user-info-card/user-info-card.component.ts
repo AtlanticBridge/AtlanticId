@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserInfoCardComponent implements OnInit {
 
+  public nfidWalletAddress: string = 'N/A'
+  public userNfid: string = 'your'
+
   constructor() { }
 
   ngOnInit(): void {

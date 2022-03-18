@@ -45,9 +45,10 @@ mat-toolbar {
     align-items: center;
     display: flex;
     border-bottom: 1vh solid transparent;
-    font-size: medium;
-    font-weight: 700;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    // font-size: medium;
+    // font-weight: 700;
+    // font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: "GroteskRoman55", Arial Helvetica, sans-serif;
     &:hover {
         cursor: pointer;
         height: 8.7vh;

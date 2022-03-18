@@ -1,14 +1,12 @@
 // src/theme.scss
 @use '@angular/material' as mat;
 @use './custom-component-themes/sidenav.theme.scss' as sidenav;
-
-// ? Importing `Work Sans` font for headings, you can change this if you want
-@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500&display=swap");
+@use './custom-component-themes/matcard.theme.scss' as matcard;
 
 @import "./palettes.scss";
 
 // ? 1. Default theme
-$atlantic-id-app-primary: mat.define-palette($atlantic-palette);
+$atlantic-id-app-primary: mat.define-palette($atlantic-palette, 500, 700, 100);
 $atlantic-id-app-accent: mat.define-palette($accent-palette, A200, A100, A400);
 $atlantic-id-app-warn: mat.define-palette($warn-palette);
 
@@ -30,6 +28,7 @@ $atlantic-id-app-theme: mat.define-dark-theme((
 
 @include mat.all-component-colors($atlantic-id-app-theme);
 @include sidenav.theme($atlantic-id-app-theme);
+@include matcard.theme($atlantic-id-app-theme);
 // @include mat.all-component-typographies($atlantic-id-app-accent);
 // @include mat.all-component-themes($atlantic-id-app-accent);
 

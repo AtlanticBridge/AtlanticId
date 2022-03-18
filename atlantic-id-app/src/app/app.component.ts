@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { AuthService } from './lib/auth/auth.service';
 import { SidenavService } from './lib/services/sidenav/sidenav.service';
+import { Web3modalService } from './lib/services/web3modal/web3modal.service';
 
 @Component({
   selector: 'app-root',
@@ -17,8 +18,13 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   constructor(
     private sideNavService: SidenavService,
-    private authService: AuthService
-  ) { }
+    private authService: AuthService,
+    private web3ModalService: Web3modalService
+  ) {
+    window.ethereum.on('accountsChanged', (accounts: any) => {
+        this.web3ModalService.changeAccounts(accounts)
+    })
+  }
 
   ngOnInit(): void {
     this.sideNavService.isDashboard.subscribe((toggletoolbar: boolean) => {
