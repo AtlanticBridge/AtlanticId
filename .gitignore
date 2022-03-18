@@ -13,4 +13,6 @@ terraform/env.bat
 terraform/.terraform
 terraform/.terraform.lock.hcl
 
+.DS_STORE
+atlantic-id-app/src/environments/*
 .env

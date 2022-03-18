@@ -1,0 +1,45 @@
+.nfid-card {
+    width: 30vw;
+    height: 75vh;
+    box-shadow: -20px 16px #b3e0d7;
+
+    .mat-card-title {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 10vh;
+    }
+    
+    .mat-card-subtitle {
+        height: 5vh;
+    }
+
+    .mat-card-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+        gap: 40px 0;
+        width: calc(100% - 3vw);
+        height: calc(100% - 20vh);
+    }
+
+    .mat-card-content-main {
+        display: flex;
+        width: inherit;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 50px;
+        height: 55vh;
+    }
+}
+
+
+
+@media (max-width: 1400px) {
+    .nfid-card {
+        min-width: 60vw;
+        min-height: 30vh;
+        box-shadow: 20px -16px teal;
+    }
+}
