@@ -59,7 +59,7 @@ module.exports = {
   },
   },
   // contracts_directory: './contracts',
-  contracts_build_directory: '../frontend/src/app/artifacts/abis',
+  contracts_build_directory: './artifacts/abis',
   // Set default mocha options here, use special reporters etc.
   mocha: {
     timeout: 100000,

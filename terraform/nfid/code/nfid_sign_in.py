@@ -12,6 +12,14 @@ logger.setLevel(logging.INFO)
 
 def lambda_handler(event, context):
 
+    headers = {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "OPTIONS, POST",
+        "Access-Control-Allow-Credentials": True,
+        "Access-Control-Allow-Headers": "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token",
+        "Content-Type": "application/json",
+    }
+
     logging.info(event)
 
     try:
@@ -36,6 +44,7 @@ def lambda_handler(event, context):
             logging.error(auth_response.reason)
             return {
                 "statusCode": auth_response.status_code,
+                "headers": headers,
                 "body": json.dumps("Authorization failed"),
             }
 
@@ -53,6 +62,7 @@ def lambda_handler(event, context):
             logging.error(user_response.reason)
             return {
                 "statusCode": user_response.status_code,
+                "headers": headers,
                 "body": json.dumps("Failed to retrieve use information"),
             }
 
@@ -82,6 +92,10 @@ def lambda_handler(event, context):
 
     except Exception as e:
         logging.error(e)
-        return {"statusCode": 500, "body": json.dumps("Internal server error")}
+        return {
+            "statusCode": 500,
+            "headers": headers,
+            "body": json.dumps("Internal server error"),
+        }
 
-    return {"statusCode": 200, "body": json.dumps(nfid)}
+    return {"statusCode": 200, "headers": headers, "body": json.dumps(nfid)}
