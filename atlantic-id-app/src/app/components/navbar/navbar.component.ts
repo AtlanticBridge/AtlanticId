@@ -14,6 +14,15 @@ import { environment } from 'src/environments/environment';
 })
 export class NavbarComponent implements OnInit {
 
+  /*
+  TODO  | Need to pass behavior between the navhub component and this component.
+          The 'mouseover' and 'mouseout' conditions should trigger a function that 
+          changes whether the navhub component is displayed or not. 
+
+          Use the NgStyle and/or the NgClass directives to dynamically change the 
+          styling of the navbar hovered links.
+  */
+
   toggleActive: boolean = false;
   isLoggedIn:   boolean = false;
 

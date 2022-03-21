@@ -53,7 +53,7 @@ export class RedirectComponent implements OnInit {
   */
   makeLogin(_params: HttpParams, header: HttpHeaders): void {
     console.log('Sending post request...')
-    let _res = this.httpClient.post(environment.AWS_COINBASE_LOGIN_TWO, null, { headers: header, params: _params })
+    let _res = this.httpClient.post(environment.AWS_COINBASE_LOGIN, null, { headers: header, params: _params })
 
     _res.subscribe((data: any) => {
       console.log('Here is the data: ', data)

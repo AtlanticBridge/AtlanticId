@@ -1,11 +1,15 @@
 .nav-developers {
     position: absolute;
+    width: inherit;
     top: 10vh;
     left: 0;
     right: 0;
-    height: 100px;
     z-index: 1;
     box-shadow: 2px 8px 16px 0px rgba(0,0,0,0.2);
     background-color: white;
     color: black;
+}
+
+.navhub-items {
+    min-height: 100px;
 }

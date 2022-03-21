@@ -1,14 +1,17 @@
-<div class="nav-developers">
-    {{showNav}}
-    <div *ngIf="showNav=='learn'" (mouseout)="emitTurnOff(true)">
+<div class="nav-developers" (mouseout)="emitTurnOff(true)">
+    
+    <div *ngIf="showNav=='learn'" class="navhub-items">
+        {{showNav}}
         Showing How We Learn
     </div>
 
-    <div *ngIf="showNav=='developers'" (mouseout)="emitTurnOff(true)">
+    <div *ngIf="showNav=='developers'" class="navhub-items">
+        {{showNav}}
         Showing How We Develop
     </div>
 
-    <div *ngIf="showNav=='company'" (mouseout)="emitTurnOff(true)">
+    <div *ngIf="showNav=='company'" class="navhub-items">
+        {{showNav}}
         Showing How We Company
     </div>
 </div>

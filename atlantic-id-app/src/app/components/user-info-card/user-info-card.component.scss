@@ -1,17 +1,17 @@
 .user-info-card {
-    width: 30vw;
-    height: 75vh;
+    width: auto;
+    height: auto;
     box-shadow: 20px -16px #006a49;
 
     .mat-card-title {
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 10vh;
+        height: auto;
     }
     
     .mat-card-subtitle {
-        height: 5vh;
+        height: auto;
     }
 
     .mat-card-content {
@@ -20,8 +20,8 @@
         align-items: flex-start;
         justify-content: flex-start;
         gap: 40px 0;
-        width: calc(100% - 3vw);
-        height: calc(100% - 20vh);
+        // width: calc(100% - 3vw);
+        // height: calc(100% - 20vh);
     }
 
     .mat-card-content-main {
@@ -30,14 +30,14 @@
         flex-direction: column;
         align-items: flex-start;
         gap: 50px;
-        height: 55vh;
+        // height: 55vh;
     }
 }
 
 @media (max-width: 1400px) {
     .user-info-card {
-        min-width: 60vw;
-        min-height: 30vh;
+        // min-width: 60vw;
+        // min-height: 30vh;
         box-shadow: 20px -16px teal;
     }
 }
