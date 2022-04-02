@@ -64,6 +64,7 @@ contract AtlanticId is
         _setupRole(PAUSER_ROLE, atlanticIdOwner);
         _setupRole(BURNER_ROLE, atlanticIdOwner);
         _setupRole(TRANSFER_ROLE, atlanticIdOwner);
+        _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
     }
 
     // ===================================================
