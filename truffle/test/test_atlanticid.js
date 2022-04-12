@@ -2,6 +2,8 @@ const AtlanticId = artifacts.require('AtlanticId')
 // const assert = require("chai").assert
 const truffleAssert = require('truffle-assertions')
 
+// const Web3 = require("web3")
+
 contract('AtlanticId Function Testing', async accounts => {
     /** Full Test Variables */
     const owner = accounts[0]
@@ -54,6 +56,43 @@ contract('AtlanticId Function Testing', async accounts => {
             await atlanticIdInstance.approveTransfer(acnt1, {from: owner})
             const acnt1_transfer_key = await atlanticIdInstance.getTransferKey(acnt1, {from: owner})
             assert.equal(acnt1_transfer_key, transfer_key_true)
+        })
+    })
+
+    describe("Check Roles are properly assigned.", async () => {
+        /** TEST #1 */
+        it("Check if DEFAULT_ADMIN_ROLE is assigned", async () => {
+            let role = web3.utils.keccak256("DEFULAT_ADMIN_ROLE")
+            let acnt = await atlanticIdInstance.hasRole(role, owner)
+            assert.equal(acnt,true)
+        })
+
+        /** TEST #2 */
+        it("Check if MINTER_ROLE is assigned", async () => {
+            let role = web3.utils.keccak256("MINTER_ROLE")
+            let acnt = await atlanticIdInstance.hasRole(role, owner)
+            assert.equal(acnt,true)
+        })
+
+        /** TEST #3 */
+        it("Check if PAUSER_ROLE is assigned", async () => {
+            let role = web3.utils.keccak256("PAUSER_ROLE")
+            let acnt = await atlanticIdInstance.hasRole(role, owner)
+            assert.equal(acnt,true)
+        })
+
+        /** TEST #4 */
+        it("Check if BURNER_ROLE is assigned", async () => {
+            let role = web3.utils.keccak256("BURNER_ROLE")
+            let acnt = await atlanticIdInstance.hasRole(role, owner)
+            assert.equal(acnt,true)
+        })
+
+        /** TEST #5 */
+        it("Check if TRANSFER_ROLE is assigned", async () => {
+            let role = web3.utils.keccak256("TRANSFER_ROLE")
+            let acnt = await atlanticIdInstance.hasRole(role, owner)
+            assert.equal(acnt,true)
         })
     })
 

@@ -14,7 +14,8 @@ def lambda_handler():
         # Import Contract ABI
         print('Importing contract ABI...')
         print(os.getcwd())
-        with open('lambda_functions/request_mint_key/abis/AtlanticId.json', 'r') as f:
+        # with open('lambda_functions/request_mint_key/abis/AtlanticId.json', 'r') as f:
+        with open('abis/AtlanticId.json', 'r') as f:
             data = json.load(f)
 
         # Connect Web3 Provider
@@ -25,18 +26,18 @@ def lambda_handler():
 
         # Set factory parameters
         factory_abi = data.get("abi")
-        factory_address = '0x1FDcFf805E9dEB9619f1EddbDb730ca289d0301b'
+        factory_address = '0xfe8e03864Cfb9e401f7f36C341E7b35ca9DAb8F5'
         factory_contract = web3.eth.contract(address=factory_address, abi=factory_abi)
 
         # Get the approved address to mint to
         approved_address = '0xC0b284aC2110BB0DdfAa743345dCae1b756d8f46'
 
         # Generate an approval key
-        approval_key = hashlib.sha256((approved_address + str(0)).encode('utf-8')).hexdigest()
+        approval_key = hashlib.sha256((approved_address.encode() + os.urandom(32))).hexdigest()
         
 
         # Send the Updated Mint Key to the Contract
-        nonce = web3.eth.get_transaction_count(approved_address) 
+        nonce = web3.eth.get_transaction_count(approved_address)
         tx_hash = factory_contract.functions.approveMint(approval_key, approved_address).buildTransaction({
             'chainId':42,
             'gas': 70000,
@@ -58,7 +59,7 @@ def lambda_handler():
     
     return {
         'statusCode': 200,
-        'body': json.dumps('Hello from Lambda!')
+        'body': json.dumps(approval_key)
     }
 
 

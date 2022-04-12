@@ -2,10 +2,9 @@
 pragma solidity ^0.8.0;
 
 import "../node_modules/@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "../node_modules/@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "../node_modules/@openzeppelin/contracts/token/ERC721/extensions/ERC721Burnable.sol";
 import "../node_modules/@openzeppelin/contracts/token/ERC721/extensions/ERC721Pausable.sol";
-import "../node_modules/@openzeppelin/contracts/access/AccessControlEnumerable.sol";
+import "../node_modules/@openzeppelin/contracts/access/AccessControl.sol";
 import "../node_modules/@openzeppelin/contracts/utils/Context.sol";
 import "../node_modules/@openzeppelin/contracts/utils/Counters.sol";
 import "./DateTime.sol";
@@ -19,9 +18,8 @@ TODO: Require a signed transaction from the "to" address before minting approval
 
 contract AtlanticId is
     Context,
-    AccessControlEnumerable,
+    AccessControl,
     ERC721Burnable,
-    ERC721Enumerable,
     ERC721Pausable
 {
     //** LIBRARIES */
@@ -30,6 +28,7 @@ contract AtlanticId is
     // using DateTime for *;
 
     /** --- USER ROLES --- */
+    bytes32 public constant ADMIN_ROLE    = keccak256("ADMIN_ROLE");
     bytes32 public constant MINTER_ROLE   = keccak256("MINTER_ROLE");
     bytes32 public constant PAUSER_ROLE   = keccak256("PAUSER_ROLE");
     bytes32 public constant BURNER_ROLE   = keccak256("BURNER_ROLE");
@@ -58,13 +57,15 @@ contract AtlanticId is
 
     /** CONSTRUCTOR */
     constructor() ERC721("AtlanticId","AID") {
-        atlanticIdOwner = _msgSender();
+        // atlanticIdOwner = _msgSender();
         // --- SET ROLES ---
-        _setupRole(MINTER_ROLE, atlanticIdOwner);
-        _setupRole(PAUSER_ROLE, atlanticIdOwner);
-        _setupRole(BURNER_ROLE, atlanticIdOwner);
-        _setupRole(TRANSFER_ROLE, atlanticIdOwner);
-        _setupRole(DEFAULT_ADMIN_ROLE, atlanticIdOwner);
+        _setupRole(DEFAULT_ADMIN_ROLE, msg.sender);
+        _setupRole(MINTER_ROLE, msg.sender);
+        _setupRole(PAUSER_ROLE, msg.sender);
+        _setupRole(BURNER_ROLE, msg.sender);
+        _setupRole(TRANSFER_ROLE, msg.sender);
+
+        atlanticIdOwner = msg.sender;
     }
 
     // ===================================================
@@ -76,7 +77,6 @@ contract AtlanticId is
         > _baseURI()
         > supportsInterface()
         > unpause()
-        > _beforeTokenTransfer()
         > _beforeTokenTransfer()
         > transferFrom()
         > safeTransferFrom()
@@ -96,7 +96,7 @@ contract AtlanticId is
         public
         view
         virtual
-        override(AccessControlEnumerable, ERC721, ERC721Enumerable)
+        override(AccessControl, ERC721)
         returns (bool)
     {
         return super.supportsInterface(interfaceId);
@@ -120,7 +120,7 @@ contract AtlanticId is
         address from,
         address to,
         uint256 tokenId
-    ) internal virtual override(ERC721, ERC721Enumerable, ERC721Pausable) {
+    ) internal virtual override(ERC721, ERC721Pausable) {
         super._beforeTokenTransfer(from, to, tokenId);
     }
 
