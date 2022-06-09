@@ -4,6 +4,8 @@
 
 export const environment = {
   production: false,
+  AWS_COINBASE_LOGIN: 'https://1ubatmapa8.execute-api.us-east-1.amazonaws.com/sign_in_coinbase_two',
+  AWS_COINBASE_LOGIN_ENDPOINT: 'https://odf1763q5h.execute-api.us-east-1.amazonaws.com/coinbase_auth_api_get'
 };
 
 /*

@@ -1,20 +1,20 @@
 import json
+import logging
 import os
 import hashlib
 from web3 import Web3
 from dotenv import load_dotenv
 
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
-def lambda_handler():
+def lambda_handler(event, context):
 
     load_dotenv()
     MINT_PRIVATE_KEY = os.getenv("MINT_PRIVATE_KEY")
     
     try:
         # Import Contract ABI
-        print('Importing contract ABI...')
-        print(os.getcwd())
-        # with open('lambda_functions/request_mint_key/abis/AtlanticId.json', 'r') as f:
         with open('abis/AtlanticId.json', 'r') as f:
             data = json.load(f)
 
@@ -30,11 +30,11 @@ def lambda_handler():
         factory_contract = web3.eth.contract(address=factory_address, abi=factory_abi)
 
         # Get the approved address to mint to
-        approved_address = '0xC0b284aC2110BB0DdfAa743345dCae1b756d8f46'
+        approved_address = event["body"]["address"]
 
         # Generate an approval key
         approval_key = hashlib.sha256((approved_address.encode() + os.urandom(32))).hexdigest()
-        
+        logging.info(approval_key)
 
         # Send the Updated Mint Key to the Contract
         nonce = web3.eth.get_transaction_count(approved_address)
@@ -48,10 +48,10 @@ def lambda_handler():
         signed_tx = web3.eth.account.sign_transaction(tx_hash, private_key=MINT_PRIVATE_KEY)
         hash_tx = web3.eth.send_raw_transaction(signed_tx.rawTransaction)
         tx_receipt = web3.eth.wait_for_transaction_receipt(hash_tx)
-        print(tx_receipt)
+        logging.info(tx_receipt)
     
     except Exception as e:
-        print(e)
+        logging.error(e)
         return {
             'statusCode': 401,
             'body': json.dumps('Transaction to contract failed!')
@@ -64,4 +64,4 @@ def lambda_handler():
 
 
 if __name__ == "__main__":
-    lambda_handler()
+    lambda_handler(None, None)
